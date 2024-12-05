@@ -220,39 +220,39 @@ static bool process_quopostrokey(uint16_t keycode, keyrecord_t* record) {
 
 uint16_t get_alt_repeat_key_keycode_user(uint16_t keycode, uint8_t mods) {
     switch (keycode) {
-        case HOME_A: return M_AND;          // A => ND.
-        // B => n/a
-        case KC_C: return KC_E;             // For "CE" bigram.
-        case HOME_D: return KC_E;           // For "DE" bigram.
-        case KC_E: return KC_D;             // For "ED" bigram.
-        case HOME_F: return KC_R;           // For "FR" bigram.
-        case KC_G: return KC_R;             // For "GR" bigram.
-        // H => n/a
-        case KC_I: return M_ION;            // A => ON.
-        case HOME_J: return M_JUST;         // J => UST.
-        // K => n/a
-        case HOME_L: return KC_O;           // For "LO" bigram.
-        case KC_M: return M_MENT;           // M => ENT.
-        case KC_N: return M_NION;           // N => ION.
-        case KC_O: return KC_L;             // For "OL" bigram.
+        case HOME_A: return M_AND;          // A => ND
+        case KC_B: return KC_R;             // B => R
+        case KC_C: return KC_E;             // C => E
+        case HOME_D: return KC_E;           // D => E
+        case KC_E: return KC_D;             // E => D
+        case HOME_F: return KC_R;           // F => R
+        case KC_G: return KC_R;             // G => R
+        case KC_H: return KC_U;             // H => U
+        case KC_I: return M_ION;            // I => ON
+        case HOME_J: return M_JUST;         // J => UST
+        case HOME_K: return KC_I;           // K => I
+        case HOME_L: return KC_O;           // L => O
+        case KC_M: return M_MENT;           // M => ENT
+        case KC_N: return M_NION;           // N => ION
+        case KC_O: return KC_L;             // O => L
         // P => n/a
-        case KC_Q: return M_QUE;            // Q => UE.
-        case KC_R: return KC_T;             // For "RT" bigram.
-        // S => n/a
-        case KC_T: return KC_R;             // For "TR" bigram.
-        case KC_U: return KC_N;             // For "UN" bigram.
-        case KC_V: return M_VER;            // V => ER.
-        case KC_W: return M_WHICH;          // W => HICH.
-        case KC_X: return M_XES;            // X => ES,
-        case KC_Y: return M_YOU;            // Y => OU.
-        // Z => n/a
-        case KC_DOT: return SENT_END;       // . => ". [oneshot shift]".
-        case KC_EXCLAIM: return SENT_END;   // . => ". [oneshot shift]".
-        case KC_QUESTION: return SENT_END;  // . => ". [oneshot shift]".
-        case KC_COMMA: return M_COMMA;      // , => " but".
-        case KC_MINUS: return M_DASH;       // - => >.
-        case KC_EQUAL: return M_EQ;         // = => >.
-        case LT1_SPC: return M_WSPC;        // "the".
+        case KC_Q: return M_QUE;            // Q => UE
+        case KC_R: return KC_T;             // R => T
+        case HOME_S: return KC_W;           // S => W
+        case KC_T: return KC_R;             // T => R
+        case KC_U: return KC_N;             // U => N
+        case KC_V: return M_VER;            // V => ER
+        case KC_W: return M_WHICH;          // W => HICH
+        case KC_X: return M_XES;            // X => ES
+        case KC_Y: return M_YOU;            // Y => OU
+        case KC_Z: return KC_A;             // Z => A
+        case KC_DOT: return SENT_END;       // . => " [oneshot shift]"
+        case KC_EXCLAIM: return SENT_END;   // . => " [oneshot shift]"
+        case KC_QUESTION: return SENT_END;  // . => " [oneshot shift]"
+        case KC_COMMA: return M_COMMA;      // , => " but"
+        case KC_MINUS: return M_DASH;       // - => >
+        case KC_EQUAL: return M_EQ;         // = => >
+        case LT1_SPC: return M_WSPC;        // " " => the
     }
 
     return XXXXXXX;  // Defer to no output.
