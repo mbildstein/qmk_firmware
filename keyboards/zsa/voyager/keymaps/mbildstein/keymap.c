@@ -155,7 +155,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // -----------
 
 #ifdef COMBO_ENABLE
-#include "combos.c"
+#include "combos.h"
 #endif
 
 
@@ -164,7 +164,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // ------------
 
 #ifdef LEADER_ENABLE
-#include "leader_sequences.c"
+#include "leader_sequences.h"
 #endif
 
 // ------------------
@@ -247,8 +247,8 @@ uint16_t get_alt_repeat_key_keycode_user(uint16_t keycode, uint8_t mods) {
         case KC_Y: return M_YOU;            // Y => OU
         case KC_Z: return KC_A;             // Z => A
         case KC_DOT: return SENT_END;       // . => " [oneshot shift]"
-        case KC_EXCLAIM: return SENT_END;   // . => " [oneshot shift]"
-        case KC_QUESTION: return SENT_END;  // . => " [oneshot shift]"
+        case KC_EXCLAIM: return SENT_END;   // ! => " [oneshot shift]"
+        case KC_QUESTION: return SENT_END;  // ? => " [oneshot shift]"
         case KC_COMMA: return M_COMMA;      // , => " but"
         case KC_MINUS: return M_DASH;       // - => >
         case KC_EQUAL: return M_EQ;         // = => >
