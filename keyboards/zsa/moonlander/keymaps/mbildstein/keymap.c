@@ -2,10 +2,12 @@
 #include "version.h"
 
 enum layers {
-    BASE,  // default layer
-    SYMB,  // symbols
-    MDIA,  // media keys
-    BLANK, // blank layer
+  BASE_0,
+  NAV_1,
+  MOUSE_2,
+  NUM_3,
+  SYM_4,
+  SYS_5,
 };
 
 enum custom_keycodes {
@@ -14,31 +16,58 @@ enum custom_keycodes {
 
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-    [BASE] = LAYOUT(
-        KC_EQL,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_LEFT,           KC_RGHT, KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_MINS,
-        KC_DEL,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    TG(SYMB),         TG(SYMB), KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSLS,
-        KC_BSPC, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_HYPR,           KC_MEH,  KC_H,    KC_J,    KC_K,    KC_L,    LT(MDIA, KC_SCLN), LGUI_T(KC_QUOT),
-        KC_LSFT, LCTL_T(KC_Z),KC_X,KC_C,    KC_V,    KC_B,                                KC_N,    KC_M,    KC_COMM, KC_DOT,  RCTL_T(KC_SLSH), KC_RSFT,
-    LT(SYMB,KC_GRV),WEBUSB_PAIR,A(KC_LSFT),KC_LEFT, KC_RGHT,  LALT_T(KC_APP),    RCTL_T(KC_ESC),   KC_UP,   KC_DOWN, KC_LBRC, KC_RBRC, MO(SYMB),
-                                            KC_SPC,  KC_BSPC, KC_LGUI,           KC_LALT,  KC_TAB,  KC_ENT
+    [BASE_0] = LAYOUT(
+        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  /* SPLIT */  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+        _______, KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    XXXXXXX,  /* SPLIT */  XXXXXXX, KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_QUOTE,
+        _______, _______, _______, _______, _______, _______, XXXXXXX,  /* SPLIT */  XXXXXXX, KC_H,    _______, _______, _______, _______, _______,
+        _______, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,              /* SPLIT */           KC_N,    KC_M,    KC_COMMA, _______, KC_SLASH, KC_MINUS,
+        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,          _______,  /* SPLIT */  _______,          _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+                                            _______, _______, _______,  /* SPLIT */  _______, _______, _______
     ),
 
-    [SYMB] = LAYOUT(
-        VRSN,    KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   _______,           _______, KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,
-        _______, KC_EXLM, KC_AT,   KC_LCBR, KC_RCBR, KC_PIPE, _______,           _______, KC_UP,   KC_7,    KC_8,    KC_9,    KC_ASTR, KC_F12,
-        _______, KC_HASH, KC_DLR,  KC_LPRN, KC_RPRN, KC_GRV,  _______,           _______, KC_DOWN, KC_4,    KC_5,    KC_6,    KC_PLUS, _______,
-        _______, KC_PERC, KC_CIRC, KC_LBRC, KC_RBRC, KC_TILD,                             KC_AMPR, KC_1,    KC_2,    KC_3,    KC_BSLS, _______,
-        EE_CLR,  _______, _______, _______, _______,          RGB_VAI,           RGB_TOG,          _______, KC_DOT,  KC_0,    KC_EQL,  _______,
-                                            RGB_HUD, RGB_VAD, RGB_HUI, TOGGLE_LAYER_COLOR,_______, _______
+    [NAV_1] = LAYOUT(
+        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  /* SPLIT */  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  /* SPLIT */  XXXXXXX, XXXXXXX, _______, KC_PGDN, KC_PGUP, _______, XXXXXXX,
+        XXXXXXX, KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, XXXXXXX, XXXXXXX,  /* SPLIT */  XXXXXXX, XXXXXXX, _______, KC_DOWN, KC_UP, _______, XXXXXXX,
+        XXXXXXX, _______, _______, _______, _______, XXXXXXX,           /* SPLIT */           XXXXXXX, _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,          _______,  /* SPLIT */  _______,          KC_APP,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+                                            _______, _______, _______,  /* SPLIT */  _______, _______, KC_DEL
     ),
 
-    [MDIA] = LAYOUT(
-        LED_LEVEL,_______,_______, _______, _______, _______, _______,           _______, _______, _______, _______, _______, _______, QK_BOOT,
-        _______, _______, _______, KC_MS_U, _______, _______, _______,           _______, _______, _______, _______, _______, _______, _______,
-        _______, _______, KC_MS_L, KC_MS_D, KC_MS_R, _______, _______,           _______, _______, _______, _______, _______, _______, KC_MPLY,
-        _______, _______, _______, _______, _______, _______,                             _______, _______, KC_MPRV, KC_MNXT, _______, _______,
-        _______, _______, _______, KC_BTN1, KC_BTN2,         _______,            _______,          KC_VOLU, KC_VOLD, KC_MUTE, _______, _______,
-                                            _______, _______, _______,           _______, _______, _______
+    [MOUSE_2] = LAYOUT(
+        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  /* SPLIT */  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  /* SPLIT */  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+        XXXXXXX, KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, XXXXXXX, XXXXXXX,  /* SPLIT */  XXXXXXX, XXXXXXX, _______, _______, _______, _______, XXXXXXX,
+        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,           /* SPLIT */           XXXXXXX, _______, _______, _______, _______, XXXXXXX,
+        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,          _______,  /* SPLIT */  _______,          KC_APP,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+                                            _______, _______, _______,  /* SPLIT */  _______, _______, _______
+    ),
+
+    [NUM_3] = LAYOUT(
+        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  /* SPLIT */  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  /* SPLIT */  XXXXXXX, _______, _______, _______, _______, KC_MINUS, KC_NUM,
+        XXXXXXX, KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, XXXXXXX, XXXXXXX,  /* SPLIT */  XXXXXXX, _______, _______, _______, _______, KC_DOT,   XXXXXXX,
+        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,           /* SPLIT */           _______, _______, _______, _______, KC_SLASH, XXXXXXX,
+        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,          _______,  /* SPLIT */  _______,          _______, _______, _______, XXXXXXX, XXXXXXX,
+                                            _______, _______, _______,  /* SPLIT */  _______, _______, _______
+    ),
+
+    [SYM_4] = LAYOUT(
+        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  /* SPLIT */  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+        XXXXXXX, KC_LABK, KC_LBRC, KC_LCBR, KC_LPRN, XXXXXXX, XXXXXXX,  /* SPLIT */  XXXXXXX, XXXXXXX, KC_RPRN, KC_RCBR, KC_RBRC, KC_RABK, XXXXXXX,
+        XXXXXXX, _______, _______, _______, _______, KC_PERC, XXXXXXX,  /* SPLIT */  XXXXXXX, KC_CIRC, KC_AMPR, KC_EQUAL, KC_PIPE, XXXXXXX, KC_GRAVE,
+        XXXXXXX, _______, _______, _______, _______, XXXXXXX,           /* SPLIT */           XXXXXXX, KC_PLUS, KC_MINUS, KC_ASTR, KC_BSLS, XXXXXXX,
+        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,          _______,  /* SPLIT */  _______,          _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+                                            _______, _______, _______,  /* SPLIT */  _______, _______, _______
+    ),
+
+    [SYS_5] = LAYOUT(
+        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  /* SPLIT */  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+        XXXXXXX, XXXXXXX, RGB_HUD, RGB_HUI, UG_NEXT, UG_TOGG, XXXXXXX,  /* SPLIT */  XXXXXXX, XXXXXXX, KC_MPRV, KC_VOLD, KC_VOLU, KC_MNXT, XXXXXXX,
+        XXXXXXX, XXXXXXX, DT_DOWN, DT_UP,   DT_PRNT, XXXXXXX, XXXXXXX,  /* SPLIT */  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,           /* SPLIT */           XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,          XXXXXXX,  /* SPLIT */  XXXXXXX,          XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+                                            KC_MPLY, KC_MUTE, XXXXXXX,  /* SPLIT */  XXXXXXX, XXXXXXX, XXXXXXX
     ),
 
     [BLANK] = LAYOUT(
@@ -47,7 +76,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______, _______, _______, _______, _______, _______, _______,  /* SPLIT */  _______, _______, _______, _______, _______, _______, _______,
         _______, _______, _______, _______, _______, _______,           /* SPLIT */           _______, _______, _______, _______, _______, _______,
         _______, _______, _______, _______, _______,          _______,  /* SPLIT */  _______,          _______, _______, _______, _______, _______,
-                                            _______, _______, _______,  /* SPLIT */  _______, _______, _______, 
+                                            _______, _______, _______,  /* SPLIT */  _______, _______, _______ 
     )
 };
 
