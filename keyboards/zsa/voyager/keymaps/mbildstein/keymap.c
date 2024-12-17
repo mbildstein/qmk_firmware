@@ -16,15 +16,15 @@ enum layer_names {
 
 enum custom_keycodes {
   RGB_SLD = ML_SAFE_RANGE,
-  ST_MACRO_0,
-  ST_MACRO_1,
+  CP_LINK,
+  EN_DASH,
   ST_MACRO_2,
   ST_MACRO_3,
-  ST_MACRO_4,
-  ST_MACRO_5,
-  ST_MACRO_6,
-  ST_MACRO_7,
-  ST_MACRO_8,
+  M_ABKS,
+  M_BRKS,
+  M_CBRS,
+  M_PRNS,
+  EM_DASH,
   QUOP,
   SENT_END,
   M_AND,
@@ -67,10 +67,10 @@ enum custom_keycodes {
 #define ALT_F4 LALT(KC_F4)
 #define PRV_WRD LCTL(KC_LEFT)
 #define NXT_WRD LCTL(KC_RIGHT)
-#define CPY_ALL TD(DANCE_1)
+#define CPY_ALL TD(D01)
 #define CUT LCTL(KC_X)
 #define PASTE LCTL(KC_V)
-#define UNDO TD(DANCE_2)
+#define UNDO TD(D02)
 // layer MOUSE_2
 #define TO_BASE TO(BASE_0)
 // layer NUM_3
@@ -81,42 +81,42 @@ enum custom_keycodes {
 // No custom definitions
 
 enum tap_dance_codes {
-  DANCE_0,
-  DANCE_1,
-  DANCE_2,
-  DANCE_3,
-  DANCE_4,
-  DANCE_5,
-  DANCE_6,
-  DANCE_7,
-  DANCE_8,
-  DANCE_9,
-  DANCE_10,
-  DANCE_11,
-  DANCE_12,
-  DANCE_13,
-  DANCE_14,
-  DANCE_15,
-  DANCE_16,
-  DANCE_17,
-  DANCE_18,
-  DANCE_19,
-  DANCE_20,
+  D00,     // *** not used ***
+  D01,     // tap: [Ctrl-C] | hold: [Ctrl-A] *** not used ***
+  D02,     // tap: [Ctrl-Z] | hold: [Ctrl-Y] | tap-hold: [Ctrl-Shift-Z] *** not used ***
+  D03,     // tap: Left Arrow | hold: Home
+  D04,     // tap: Right Arrow | hold: End
+  D05,     // tap: 7 | hold: F7
+  D06,     // tap: 8 | hold: F8
+  D07,     // tap: 9 | hold: F9
+  D08,     // tap: 4 | hold: F4
+  D09,     // tap: 5 | hold: F5
+  D10,     // tap: 6 | hold: F6
+  D11,     // tap: 1 | hold: F1
+  D12,     // tap: 2 | hold: F2
+  D13,     // tap: 3 | hold: F3
+  D14,     // tap: 0 | hold: F10
+  D15,     // tap: ! | hold: GUI ◆
+  D16,     // tap: @ | hold: Alt ⎇
+  D17,     // tap: # | hold: Ctrl ⎈
+  D18,     // tap: $ | hold: Shift ⇧
+  D19,     // tap: SPC | hold: _
+  D20,     // tap: . | hold: ". [one-shot shift]"
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [BASE_0] = LAYOUT_voyager(
-    _______, KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,     /* SPLIT */  KC_Y,    KC_U,    KC_I,     KC_O,         KC_P,     KC_QUOTE,
-    WIN_SW,  HOME_A,  HOME_S,  HOME_D,  HOME_F,  KC_G,     /* SPLIT */  KC_H,    HOME_J,  HOME_K,   HOME_L,       HOME_SC,  QUOP,
-    CW_TOGG, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,     /* SPLIT */  KC_N,    KC_M,    KC_COMMA, TD(DANCE_20), KC_SLASH, KC_MINUS,
-    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, LT4_ESC, QK_REP,   /* SPLIT */  MAGIC,   LT4_TAB, XXXXXXX,  XXXXXXX,      XXXXXXX,  XXXXXXX,
+    _______, KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,     /* SPLIT */  KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_QUOTE,
+    WIN_SW,  HOME_A,  HOME_S,  HOME_D,  HOME_F,  KC_G,     /* SPLIT */  KC_H,    HOME_J,  HOME_K,  HOME_L,  HOME_SC, QUOP,
+    CW_TOGG, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,     /* SPLIT */  KC_N,    KC_M,    KC_COMM, TD(D20), KC_SLSH, KC_MINS,
+    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, LT4_ESC, QK_REP,   /* SPLIT */  MAGIC,   LT4_TAB, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
                                         LT1_SPC, LT3_ENT,  /* SPLIT */  QK_LEAD, LT5_BSP
   ),
   [NAV_1] = LAYOUT_voyager(
-    XXXXXXX, XXXXXXX, ALT_F4,  XXXXXXX, XXXXXXX, XXXXXXX,  /* SPLIT */  XXXXXXX, PRV_WRD,     KC_PGDN, KC_PGUP, NXT_WRD, XXXXXXX,
-    XXXXXXX, KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, XXXXXXX,  /* SPLIT */  XXXXXXX, TD(DANCE_3), KC_DOWN, KC_UP,   TD(DANCE_4), XXXXXXX,
-    XXXXXXX, CPY_ALL, CUT,     PASTE,   UNDO,    XXXXXXX,  /* SPLIT */  XXXXXXX, ST_MACRO_0,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  /* SPLIT */  XXXXXXX, KC_APP,      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+    XXXXXXX, XXXXXXX, ALT_F4,  XXXXXXX, XXXXXXX, XXXXXXX,  /* SPLIT */  XXXXXXX, PRV_WRD, KC_PGDN, KC_PGUP, NXT_WRD, XXXXXXX,
+    XXXXXXX, KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, XXXXXXX,  /* SPLIT */  XXXXXXX, TD(D03), KC_DOWN, KC_UP,   TD(D04), XXXXXXX,
+    XXXXXXX, CPY_ALL, CUT,     PASTE,   UNDO,    XXXXXXX,  /* SPLIT */  XXXXXXX, CP_LINK, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  /* SPLIT */  XXXXXXX, KC_APP,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
                                         _______, XXXXXXX,  /* SPLIT */  XXXXXXX, KC_DEL
   ),
   [MOUSE_2] = LAYOUT_voyager(
@@ -127,18 +127,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                         XXXXXXX, XXXXXXX,  /* SPLIT */  KC_BTN2, KC_BTN1
   ),
   [NUM_3] = LAYOUT_voyager(
-    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  /* SPLIT */  KC_PERC, TD(DANCE_5),  TD(DANCE_6),  TD(DANCE_7),  KC_MINUS, KC_NUM,
-    XXXXXXX, KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, XXXXXXX,  /* SPLIT */  KC_COLN, TD(DANCE_8),  TD(DANCE_9),  TD(DANCE_10), KC_DOT,   XXXXXXX,
-    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  /* SPLIT */  KC_HASH, TD(DANCE_11), TD(DANCE_12), TD(DANCE_13), KC_SLASH, ST_MACRO_1,
-    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  /* SPLIT */  XXXXXXX, TD(DANCE_14), KC_F11,       KC_F12,       XXXXXXX,  XXXXXXX,
-                                        XXXXXXX, _______,  /* SPLIT */  XXXXXXX, _______
+    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  /* SPLIT */  KC_PERC, TD(D05), TD(D06), TD(D07), KC_MINS, KC_NUM,
+    XXXXXXX, KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, XXXXXXX,  /* SPLIT */  KC_COLN, TD(D08), TD(D09), TD(D10), KC_DOT,  XXXXXXX,
+    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  /* SPLIT */  KC_HASH, TD(D11), TD(D12), TD(D13), KC_SLSH, EN_DASH,
+    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  /* SPLIT */  XXXXXXX, TD(D14), KC_F11,  KC_F12,  XXXXXXX, XXXXXXX,
+                                        XXXXXXX, _______,  /* SPLIT */  XXXXXXX, KC_BSPC
   ),
   [SYM_4] = LAYOUT_voyager(
-    XXXXXXX, KC_LABK,      KC_LBRC,      KC_LCBR,      KC_LPRN,      XXXXXXX,  /* SPLIT */  XXXXXXX, KC_RPRN, KC_RCBR,  KC_RBRC, KC_RABK, XXXXXXX,
-    XXXXXXX, TD(DANCE_15), TD(DANCE_16), TD(DANCE_17), TD(DANCE_18), KC_PERC,  /* SPLIT */  KC_CIRC, KC_AMPR, KC_EQUAL, KC_PIPE, XXXXXXX, KC_GRAVE,
-    XXXXXXX, ST_MACRO_4,   ST_MACRO_5,   ST_MACRO_6,   ST_MACRO_7,   XXXXXXX,  /* SPLIT */  XXXXXXX, KC_PLUS, KC_MINUS, KC_ASTR, KC_BSLS, ST_MACRO_8,
-    XXXXXXX, XXXXXXX,      XXXXXXX,      XXXXXXX,      _______,      XXXXXXX,  /* SPLIT */  XXXXXXX, _______, XXXXXXX,  XXXXXXX, XXXXXXX, XXXXXXX,
-                                                       TD(DANCE_19), _______,  /* SPLIT */  XXXXXXX, _______
+    XXXXXXX, KC_LABK, KC_LBRC, KC_LCBR, KC_LPRN, XXXXXXX,  /* SPLIT */  XXXXXXX, KC_RPRN, KC_RCBR, KC_RBRC, KC_RABK, XXXXXXX,
+    XXXXXXX, TD(D15), TD(D16), TD(D17), TD(D18), KC_PERC,  /* SPLIT */  KC_CIRC, KC_AMPR, KC_EQL,  KC_PIPE, XXXXXXX, KC_GRV,
+    XXXXXXX, M_ABKS,  M_BRKS,  M_CBRS,  M_PRNS,  XXXXXXX,  /* SPLIT */  XXXXXXX, KC_PLUS, KC_MINS, KC_ASTR, KC_BSLS, EM_DASH,
+    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______, XXXXXXX,  /* SPLIT */  XXXXXXX, _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+                                        TD(D19), _______,  /* SPLIT */  XXXXXXX, KC_BSPC
   ),
   [SYS_5] = LAYOUT_voyager(
     XXXXXXX, XXXXXXX, RGB_HUD, RGB_HUI, UG_NEXT, UG_TOGG,  /* SPLIT */  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
@@ -249,9 +249,9 @@ uint16_t get_alt_repeat_key_keycode_user(uint16_t keycode, uint8_t mods) {
         case KC_DOT: return SENT_END;       // . => " [oneshot shift]"
         case KC_EXCLAIM: return SENT_END;   // ! => " [oneshot shift]"
         case KC_QUESTION: return SENT_END;  // ? => " [oneshot shift]"
-        case KC_COMMA: return M_COMMA;      // , => " but"
-        case KC_MINUS: return M_DASH;       // - => >
-        case KC_EQUAL: return M_EQ;         // = => >
+        case KC_COMM: return M_COMMA;      // , => " but"
+        case KC_MINS: return M_DASH;       // - => >
+        case KC_EQL: return M_EQ;         // = => >
         case LT1_SPC: return M_WSPC;        // " " => the
     }
 
@@ -269,12 +269,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   if (!process_sentence_case(keycode, record)) { return false; }
 
   switch (keycode) {
-    case ST_MACRO_0:
+    case CP_LINK:
     if (record->event.pressed) {
       SEND_STRING(SS_LCTL(SS_TAP(X_V)) SS_DELAY(100) SS_LSFT(SS_TAP(X_HOME)) SS_DELAY(100) SS_LCTL(SS_TAP(X_K)) SS_DELAY(100) SS_LCTL(SS_TAP(X_V)));
     }
     break;
-    case ST_MACRO_1:
+    case EN_DASH:
     if (record->event.pressed) {
       SEND_STRING(SS_LALT(SS_TAP(X_KP_0) SS_TAP(X_KP_1) SS_TAP(X_KP_5) SS_TAP(X_KP_0) ));
     }
@@ -289,27 +289,27 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       SEND_STRING(SS_LALT(SS_TAP(X_KP_0) SS_TAP(X_KP_1) SS_TAP(X_KP_8) SS_TAP(X_KP_2) ));
     }
     break;
-    case ST_MACRO_4:
+    case M_ABKS:
     if (record->event.pressed) {
       SEND_STRING(SS_LSFT(SS_TAP(X_COMMA)) SS_DELAY(100) SS_LSFT(SS_TAP(X_DOT)) SS_DELAY(100) SS_TAP(X_LEFT));
     }
     break;
-    case ST_MACRO_5:
+    case M_BRKS:
     if (record->event.pressed) {
       SEND_STRING(SS_TAP(X_LBRC) SS_DELAY(100) SS_TAP(X_RBRC) SS_DELAY(100) SS_TAP(X_LEFT));
     }
     break;
-    case ST_MACRO_6:
+    case M_CBRS:
     if (record->event.pressed) {
       SEND_STRING(SS_LSFT(SS_TAP(X_LBRC)) SS_DELAY(100) SS_LSFT(SS_TAP(X_RBRC)) SS_DELAY(100) SS_TAP(X_LEFT));
     }
     break;
-    case ST_MACRO_7:
+    case M_PRNS:
     if (record->event.pressed) {
       SEND_STRING(SS_LSFT(SS_TAP(X_9)) SS_DELAY(100) SS_LSFT(SS_TAP(X_0)) SS_DELAY(100) SS_TAP(X_LEFT));
     }
     break;
-    case ST_MACRO_8:
+    case EM_DASH:
     if (record->event.pressed) {
       SEND_STRING(SS_LALT(SS_TAP(X_KP_0) SS_TAP(X_KP_1) SS_TAP(X_KP_5) SS_TAP(X_KP_1) ));
     }
@@ -1219,25 +1219,25 @@ void dance_20_reset(tap_dance_state_t *state, void *user_data) {
 }
 
 tap_dance_action_t tap_dance_actions[] = {
-        [DANCE_0] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_0, dance_0_finished, dance_0_reset),
-        [DANCE_1] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_1, dance_1_finished, dance_1_reset),
-        [DANCE_2] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_2, dance_2_finished, dance_2_reset),
-        [DANCE_3] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_3, dance_3_finished, dance_3_reset),
-        [DANCE_4] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_4, dance_4_finished, dance_4_reset),
-        [DANCE_5] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_5, dance_5_finished, dance_5_reset),
-        [DANCE_6] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_6, dance_6_finished, dance_6_reset),
-        [DANCE_7] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_7, dance_7_finished, dance_7_reset),
-        [DANCE_8] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_8, dance_8_finished, dance_8_reset),
-        [DANCE_9] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_9, dance_9_finished, dance_9_reset),
-        [DANCE_10] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_10, dance_10_finished, dance_10_reset),
-        [DANCE_11] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_11, dance_11_finished, dance_11_reset),
-        [DANCE_12] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_12, dance_12_finished, dance_12_reset),
-        [DANCE_13] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_13, dance_13_finished, dance_13_reset),
-        [DANCE_14] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_14, dance_14_finished, dance_14_reset),
-        [DANCE_15] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_15, dance_15_finished, dance_15_reset),
-        [DANCE_16] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_16, dance_16_finished, dance_16_reset),
-        [DANCE_17] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_17, dance_17_finished, dance_17_reset),
-        [DANCE_18] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_18, dance_18_finished, dance_18_reset),
-        [DANCE_19] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_19, dance_19_finished, dance_19_reset),
-        [DANCE_20] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_20, dance_20_finished, dance_20_reset),
+        [D00] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_0, dance_0_finished, dance_0_reset),
+        [D01] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_1, dance_1_finished, dance_1_reset),
+        [D02] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_2, dance_2_finished, dance_2_reset),
+        [D03] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_3, dance_3_finished, dance_3_reset),
+        [D04] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_4, dance_4_finished, dance_4_reset),
+        [D05] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_5, dance_5_finished, dance_5_reset),
+        [D06] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_6, dance_6_finished, dance_6_reset),
+        [D07] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_7, dance_7_finished, dance_7_reset),
+        [D08] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_8, dance_8_finished, dance_8_reset),
+        [D09] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_9, dance_9_finished, dance_9_reset),
+        [D10] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_10, dance_10_finished, dance_10_reset),
+        [D11] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_11, dance_11_finished, dance_11_reset),
+        [D12] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_12, dance_12_finished, dance_12_reset),
+        [D13] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_13, dance_13_finished, dance_13_reset),
+        [D14] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_14, dance_14_finished, dance_14_reset),
+        [D15] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_15, dance_15_finished, dance_15_reset),
+        [D16] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_16, dance_16_finished, dance_16_reset),
+        [D17] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_17, dance_17_finished, dance_17_reset),
+        [D18] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_18, dance_18_finished, dance_18_reset),
+        [D19] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_19, dance_19_finished, dance_19_reset),
+        [D20] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_20, dance_20_finished, dance_20_reset),
 };

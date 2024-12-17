@@ -18,9 +18,9 @@ enum custom_keycodes {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [BASE_0] = LAYOUT(
         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  /* SPLIT */  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-        _______, KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    XXXXXXX,  /* SPLIT */  XXXXXXX, KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_QUOTE,
+        _______, KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    XXXXXXX,  /* SPLIT */  XXXXXXX, KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_QUOT,
         _______, _______, _______, _______, _______, _______, XXXXXXX,  /* SPLIT */  XXXXXXX, KC_H,    _______, _______, _______, _______, _______,
-        _______, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,              /* SPLIT */           KC_N,    KC_M,    KC_COMMA, _______, KC_SLASH, KC_MINUS,
+        _______, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,              /* SPLIT */           KC_N,    KC_M,    KC_COMM, _______, KC_SLSH, KC_MINS,
         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,          _______,  /* SPLIT */  _______,          _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
                                             _______, _______, _______,  /* SPLIT */  _______, _______, _______
     ),
@@ -28,10 +28,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [NAV_1] = LAYOUT(
         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  /* SPLIT */  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  /* SPLIT */  XXXXXXX, XXXXXXX, _______, KC_PGDN, KC_PGUP, _______, XXXXXXX,
-        XXXXXXX, KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, XXXXXXX, XXXXXXX,  /* SPLIT */  XXXXXXX, XXXXXXX, _______, KC_DOWN, KC_UP, _______, XXXXXXX,
+        XXXXXXX, KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, XXXXXXX, XXXXXXX,  /* SPLIT */  XXXXXXX, XXXXXXX, _______, KC_DOWN, KC_UP,   _______, XXXXXXX,
         XXXXXXX, _______, _______, _______, _______, XXXXXXX,           /* SPLIT */           XXXXXXX, _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,          _______,  /* SPLIT */  _______,          KC_APP,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-                                            _______, _______, _______,  /* SPLIT */  _______, _______, KC_DEL
+        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,          XXXXXXX,  /* SPLIT */  XXXXXXX,          KC_APP,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+                                            _______, _______, XXXXXXX,  /* SPLIT */  XXXXXXX, _______, KC_DEL
     ),
 
     [MOUSE_2] = LAYOUT(
@@ -39,26 +39,26 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  /* SPLIT */  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
         XXXXXXX, KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, XXXXXXX, XXXXXXX,  /* SPLIT */  XXXXXXX, XXXXXXX, _______, _______, _______, _______, XXXXXXX,
         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,           /* SPLIT */           XXXXXXX, _______, _______, _______, _______, XXXXXXX,
-        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,          _______,  /* SPLIT */  _______,          KC_APP,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-                                            _______, _______, _______,  /* SPLIT */  _______, _______, _______
+        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,          XXXXXXX,  /* SPLIT */  XXXXXXX,          KC_APP,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+                                            _______, _______, XXXXXXX,  /* SPLIT */  XXXXXXX, _______, _______
     ),
 
     [NUM_3] = LAYOUT(
         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  /* SPLIT */  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  /* SPLIT */  XXXXXXX, _______, _______, _______, _______, KC_MINUS, KC_NUM,
-        XXXXXXX, KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, XXXXXXX, XXXXXXX,  /* SPLIT */  XXXXXXX, _______, _______, _______, _______, KC_DOT,   XXXXXXX,
-        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,           /* SPLIT */           _______, _______, _______, _______, KC_SLASH, XXXXXXX,
-        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,          _______,  /* SPLIT */  _______,          _______, _______, _______, XXXXXXX, XXXXXXX,
-                                            _______, _______, _______,  /* SPLIT */  _______, _______, _______
+        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  /* SPLIT */  XXXXXXX, _______, _______, _______, _______, KC_MINS, KC_NUM,
+        XXXXXXX, KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, XXXXXXX, XXXXXXX,  /* SPLIT */  XXXXXXX, _______, _______, _______, _______, KC_DOT,  XXXXXXX,
+        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,           /* SPLIT */           _______, _______, _______, _______, KC_SLSH, XXXXXXX,
+        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,          XXXXXXX,  /* SPLIT */  XXXXXXX,          _______, _______, _______, XXXXXXX, XXXXXXX,
+                                            _______, _______, XXXXXXX,  /* SPLIT */  XXXXXXX, _______, KC_BSPC
     ),
 
     [SYM_4] = LAYOUT(
         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  /* SPLIT */  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
         XXXXXXX, KC_LABK, KC_LBRC, KC_LCBR, KC_LPRN, XXXXXXX, XXXXXXX,  /* SPLIT */  XXXXXXX, XXXXXXX, KC_RPRN, KC_RCBR, KC_RBRC, KC_RABK, XXXXXXX,
-        XXXXXXX, _______, _______, _______, _______, KC_PERC, XXXXXXX,  /* SPLIT */  XXXXXXX, KC_CIRC, KC_AMPR, KC_EQUAL, KC_PIPE, XXXXXXX, KC_GRAVE,
-        XXXXXXX, _______, _______, _______, _______, XXXXXXX,           /* SPLIT */           XXXXXXX, KC_PLUS, KC_MINUS, KC_ASTR, KC_BSLS, XXXXXXX,
-        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,          _______,  /* SPLIT */  _______,          _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-                                            _______, _______, _______,  /* SPLIT */  _______, _______, _______
+        XXXXXXX, _______, _______, _______, _______, KC_PERC, XXXXXXX,  /* SPLIT */  XXXXXXX, KC_CIRC, KC_AMPR, KC_EQL,  KC_PIPE, XXXXXXX, KC_GRV,
+        XXXXXXX, _______, _______, _______, _______, XXXXXXX,           /* SPLIT */           XXXXXXX, KC_PLUS, KC_MINS, KC_ASTR, KC_BSLS, XXXXXXX,
+        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,          XXXXXXX,  /* SPLIT */  XXXXXXX,          _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+                                            _______, _______, XXXXXXX,  /* SPLIT */  XXXXXXX, _______, KC_BSPC
     ),
 
     [SYS_5] = LAYOUT(
