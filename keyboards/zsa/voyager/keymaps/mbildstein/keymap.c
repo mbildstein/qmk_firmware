@@ -18,8 +18,6 @@ enum custom_keycodes {
   RGB_SLD = ML_SAFE_RANGE,
   CP_LINK,
   EN_DASH,
-  ST_MACRO_2,
-  ST_MACRO_3,
   M_ABKS,
   M_BRKS,
   M_CBRS,
@@ -277,16 +275,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case EN_DASH:
     if (record->event.pressed) {
       SEND_STRING(SS_LALT(SS_TAP(X_KP_0) SS_TAP(X_KP_1) SS_TAP(X_KP_5) SS_TAP(X_KP_0) ));
-    }
-    break;
-    case ST_MACRO_2:
-    if (record->event.pressed) {
-      SEND_STRING(SS_LALT(SS_TAP(X_KP_0) SS_TAP(X_KP_1) SS_TAP(X_KP_6) SS_TAP(X_KP_7) ));
-    }
-    break;
-    case ST_MACRO_3:
-    if (record->event.pressed) {
-      SEND_STRING(SS_LALT(SS_TAP(X_KP_0) SS_TAP(X_KP_1) SS_TAP(X_KP_8) SS_TAP(X_KP_2) ));
     }
     break;
     case M_ABKS:
