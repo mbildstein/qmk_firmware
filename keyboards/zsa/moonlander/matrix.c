@@ -16,6 +16,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include "i2c_master.h"
 #include "moonlander.h"
 #include "mcp23018.h"
 
@@ -80,8 +81,16 @@ bool matrix_scan_custom(matrix_row_t current_matrix[]) {
         if (++mcp23018_reset_loop > 0x1FFF) {
             if (io_expander_ready()) {
                 // If we managed to initialize the mcp23018 - we need to reinitialize the matrix / layer state. During an electric discharge the i2c peripherals might be in a weird state. Giving a delay and resetting the MCU allows to recover from this.
-                wait_ms(200);
-                mcu_reset();
+//                wait_ms(200);
+ //               mcu_reset();
+ //               WIP: reinit the io expander and led driver
+            i2c_init();
+            mcp23018_init(MCP23018_DEFAULT_ADDRESS);
+            #ifdef RGB_MATRIX_ENABLE
+            rgb_matrix_init();
+            #endif
+            mcp23018_errors = 0;
+            mcp23018_reset_loop = 0;
             }
         }
     }
