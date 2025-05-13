@@ -84,13 +84,15 @@ bool matrix_scan_custom(matrix_row_t current_matrix[]) {
 //                wait_ms(200);
  //               mcu_reset();
  //               WIP: reinit the io expander and led driver
-            i2c_init();
-            mcp23018_init(MCP23018_DEFAULT_ADDRESS);
-            #ifdef RGB_MATRIX_ENABLE
-            rgb_matrix_init();
-            #endif
-            mcp23018_errors = 0;
-            mcp23018_reset_loop = 0;
+                i2c_reset();
+                mcp23018_reset_loop = 0;
+                mcp23018_errors     = 0;
+                mcp23018_init(MCP23018_DEFAULT_ADDRESS);
+                mcp23018_errors += !mcp23018_set_config(MCP23018_DEFAULT_ADDRESS, mcp23018_PORTA, 0b00000000);
+                mcp23018_errors += !mcp23018_set_config(MCP23018_DEFAULT_ADDRESS, mcp23018_PORTB, 0b00111111);
+                #ifdef RGB_MATRIX_ENABLE
+                rgb_matrix_init();
+                #endif
             }
         }
     }
