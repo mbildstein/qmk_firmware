@@ -165,7 +165,7 @@ bool matrix_scan_custom(matrix_row_t current_matrix[]) {
                 __asm__("nop");
             }
         } else {
-            data = 0;
+            data = 0b11000000;
         }
 
         if (raw_matrix_right[row] != data) {

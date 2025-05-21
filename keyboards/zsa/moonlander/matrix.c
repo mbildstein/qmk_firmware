@@ -175,7 +175,7 @@ bool matrix_scan_custom(matrix_row_t current_matrix[]) {
             mcp23018_errors += !mcp23018_read_pins(MCP23018_DEFAULT_ADDRESS, mcp23018_PORTB, &rx);
             data = ~(rx & 0b00111111);
         } else {
-            data = 0;
+            data = 0b11000000;
         }
 
         if (raw_matrix_right[row] != data) {
