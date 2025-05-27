@@ -5,7 +5,19 @@
 #include <stdint.h>
 #include "voyager.h"
 #include "mcp23018.h"
+#ifndef ORYX_CONFIGURATOR
+// TODO: move this to a zsa community module once we adopt qmk25 100%.
+#include "i2c_master.h"
 
+#ifndef I2C_DRIVER
+#    define I2C_DRIVER I2CD1
+#endif
+void i2c_reset(void) {
+    i2cStop(&I2C_DRIVER);
+    chThdSleepMilliseconds(10);
+    i2c_init();
+}
+#endif
 #pragma GCC push_options
 #pragma GCC optimize("-O3")
 
